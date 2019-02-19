@@ -1,5 +1,5 @@
 {
-    "name": "GIT_USER_ID/GIT_REPO_ID",
+    "name": "singlewind/hydra-sdk",
     "description": "Welcome to the ORY Hydra HTTP API documentation. You will find documentation for all HTTP APIs here.",
     "keywords": [
         "openapitools",
