@@ -36,7 +36,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * PreviousConsentSession Class Doc Comment
  *
  * @category Class
- * @description The response used to return handled consent requests same as HandledAuthenticationRequest, just with consent_request exposed as json
+ * @description PreviousConsentSession The response used to return handled consent requests same as HandledLoginRequest, just with consent_request exposed as json
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -63,7 +63,7 @@ class PreviousConsentSession implements ModelInterface, ArrayAccess
         'grant_scope' => 'string[]',
         'remember' => 'bool',
         'remember_for' => 'int',
-        'session' => '\OpenAPI\Client\Model\ConsentRequestSession'
+        'session' => '\OpenAPI\Client\Model\ConsentRequestSessionData'
     ];
 
     /**
@@ -358,7 +358,7 @@ class PreviousConsentSession implements ModelInterface, ArrayAccess
     /**
      * Gets session
      *
-     * @return \OpenAPI\Client\Model\ConsentRequestSession|null
+     * @return \OpenAPI\Client\Model\ConsentRequestSessionData|null
      */
     public function getSession()
     {
@@ -368,7 +368,7 @@ class PreviousConsentSession implements ModelInterface, ArrayAccess
     /**
      * Sets session
      *
-     * @param \OpenAPI\Client\Model\ConsentRequestSession|null $session session
+     * @param \OpenAPI\Client\Model\ConsentRequestSessionData|null $session session
      *
      * @return $this
      */

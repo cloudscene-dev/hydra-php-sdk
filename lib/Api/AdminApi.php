@@ -163,7 +163,7 @@ class AdminApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 401:
+                case 404:
                     if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
@@ -213,7 +213,7 @@ class AdminApi
                     );
                     $e->setResponseObject($data);
                     break;
-                case 401:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\GenericError',
@@ -323,22 +323,18 @@ class AdminApi
             );
         }
 
-        $resourcePath = '/oauth2/auth/requests/consent/{challenge}/accept';
+        $resourcePath = '/oauth2/auth/requests/consent/accept';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-
-        // path params
+        // query params
         if ($challenge !== null) {
-            $resourcePath = str_replace(
-                '{' . 'challenge' . '}',
-                ObjectSerializer::toPathValue($challenge),
-                $resourcePath
-            );
+            $queryParams['challenge'] = ObjectSerializer::toQueryValue($challenge);
         }
+
 
         // body params
         $_tempBody = null;
@@ -417,7 +413,7 @@ class AdminApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\CompletedRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
+     * @return \OpenAPI\Client\Model\CompletedRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
      */
     public function acceptLoginRequest($challenge, $body = null)
     {
@@ -435,7 +431,7 @@ class AdminApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\CompletedRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\CompletedRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function acceptLoginRequestWithHttpInfo($challenge, $body = null)
     {
@@ -495,6 +491,18 @@ class AdminApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 404:
+                    if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 case 500:
                     if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
@@ -534,6 +542,14 @@ class AdminApi
                     $e->setResponseObject($data);
                     break;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\GenericError',
@@ -643,22 +659,18 @@ class AdminApi
             );
         }
 
-        $resourcePath = '/oauth2/auth/requests/login/{challenge}/accept';
+        $resourcePath = '/oauth2/auth/requests/login/accept';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-
-        // path params
+        // query params
         if ($challenge !== null) {
-            $resourcePath = str_replace(
-                '{' . 'challenge' . '}',
-                ObjectSerializer::toPathValue($challenge),
-                $resourcePath
-            );
+            $queryParams['challenge'] = ObjectSerializer::toQueryValue($challenge);
         }
+
 
         // body params
         $_tempBody = null;
@@ -791,7 +803,7 @@ class AdminApi
 
             $responseBody = $response->getBody();
             switch($statusCode) {
-                case 200:
+                case 201:
                     if ('\OpenAPI\Client\Model\JSONWebKeySet' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
@@ -857,7 +869,7 @@ class AdminApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\JSONWebKeySet',
@@ -1076,7 +1088,7 @@ class AdminApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\OAuth2Client|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
+     * @return \OpenAPI\Client\Model\OAuth2Client|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
      */
     public function createOAuth2Client($body)
     {
@@ -1093,7 +1105,7 @@ class AdminApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\OAuth2Client|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\OAuth2Client|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createOAuth2ClientWithHttpInfo($body)
     {
@@ -1129,7 +1141,7 @@ class AdminApi
 
             $responseBody = $response->getBody();
             switch($statusCode) {
-                case 200:
+                case 201:
                     if ('\OpenAPI\Client\Model\OAuth2Client' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
@@ -1141,19 +1153,7 @@ class AdminApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 401:
-                    if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GenericError', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
+                case 409:
                     if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
@@ -1195,7 +1195,7 @@ class AdminApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\OAuth2Client',
@@ -1203,15 +1203,7 @@ class AdminApi
                     );
                     $e->setResponseObject($data);
                     break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GenericError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
+                case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\GenericError',
@@ -1972,15 +1964,7 @@ class AdminApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GenericError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\GenericError',
@@ -2460,7 +2444,7 @@ class AdminApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 401:
+                case 404:
                     if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
@@ -2522,7 +2506,7 @@ class AdminApi
                     );
                     $e->setResponseObject($data);
                     break;
-                case 401:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\GenericError',
@@ -2637,22 +2621,18 @@ class AdminApi
             );
         }
 
-        $resourcePath = '/oauth2/auth/requests/consent/{challenge}';
+        $resourcePath = '/oauth2/auth/requests/consent';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-
-        // path params
+        // query params
         if ($challenge !== null) {
-            $resourcePath = str_replace(
-                '{' . 'challenge' . '}',
-                ObjectSerializer::toPathValue($challenge),
-                $resourcePath
-            );
+            $queryParams['challenge'] = ObjectSerializer::toQueryValue($challenge);
         }
+
 
         // body params
         $_tempBody = null;
@@ -3455,7 +3435,7 @@ class AdminApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 401:
+                case 404:
                     if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
@@ -3517,7 +3497,7 @@ class AdminApi
                     );
                     $e->setResponseObject($data);
                     break;
-                case 401:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\GenericError',
@@ -3632,22 +3612,18 @@ class AdminApi
             );
         }
 
-        $resourcePath = '/oauth2/auth/requests/login/{challenge}';
+        $resourcePath = '/oauth2/auth/requests/login';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-
-        // path params
+        // query params
         if ($challenge !== null) {
-            $resourcePath = str_replace(
-                '{' . 'challenge' . '}',
-                ObjectSerializer::toPathValue($challenge),
-                $resourcePath
-            );
+            $queryParams['challenge'] = ObjectSerializer::toQueryValue($challenge);
         }
+
 
         // body params
         $_tempBody = null;
@@ -3722,7 +3698,7 @@ class AdminApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\OAuth2Client|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
+     * @return \OpenAPI\Client\Model\OAuth2Client|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
      */
     public function getOAuth2Client($id)
     {
@@ -3739,7 +3715,7 @@ class AdminApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\OAuth2Client|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\OAuth2Client|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOAuth2ClientWithHttpInfo($id)
     {
@@ -3787,19 +3763,7 @@ class AdminApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 401:
-                    if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GenericError', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
+                case 404:
                     if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
@@ -3849,15 +3813,7 @@ class AdminApi
                     );
                     $e->setResponseObject($data);
                     break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GenericError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\GenericError',
@@ -4380,7 +4336,7 @@ class AdminApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\OAuth2Client[]|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
+     * @return \OpenAPI\Client\Model\OAuth2Client[]|\OpenAPI\Client\Model\GenericError
      */
     public function listOAuth2Clients($limit = null, $offset = null)
     {
@@ -4398,7 +4354,7 @@ class AdminApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\OAuth2Client[]|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\OAuth2Client[]|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listOAuth2ClientsWithHttpInfo($limit = null, $offset = null)
     {
@@ -4446,30 +4402,6 @@ class AdminApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 401:
-                    if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GenericError', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
-                    if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GenericError', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
                 case 500:
                     if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
@@ -4504,22 +4436,6 @@ class AdminApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\OAuth2Client[]',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GenericError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4710,7 +4626,7 @@ class AdminApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\PreviousConsentSession[]|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
+     * @return \OpenAPI\Client\Model\PreviousConsentSession[]|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
      */
     public function listUserConsentSessions($user)
     {
@@ -4727,7 +4643,7 @@ class AdminApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\PreviousConsentSession[]|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\PreviousConsentSession[]|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listUserConsentSessionsWithHttpInfo($user)
     {
@@ -4775,19 +4691,7 @@ class AdminApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 401:
-                    if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GenericError', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
+                case 404:
                     if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
@@ -4837,15 +4741,7 @@ class AdminApi
                     );
                     $e->setResponseObject($data);
                     break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GenericError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\GenericError',
@@ -5109,7 +5005,7 @@ class AdminApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 401:
+                case 404:
                     if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
@@ -5159,7 +5055,7 @@ class AdminApi
                     );
                     $e->setResponseObject($data);
                     break;
-                case 401:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\GenericError',
@@ -5269,22 +5165,18 @@ class AdminApi
             );
         }
 
-        $resourcePath = '/oauth2/auth/requests/consent/{challenge}/reject';
+        $resourcePath = '/oauth2/auth/requests/consent/reject';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-
-        // path params
+        // query params
         if ($challenge !== null) {
-            $resourcePath = str_replace(
-                '{' . 'challenge' . '}',
-                ObjectSerializer::toPathValue($challenge),
-                $resourcePath
-            );
+            $queryParams['challenge'] = ObjectSerializer::toQueryValue($challenge);
         }
+
 
         // body params
         $_tempBody = null;
@@ -5363,7 +5255,7 @@ class AdminApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\CompletedRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
+     * @return \OpenAPI\Client\Model\CompletedRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
      */
     public function rejectLoginRequest($challenge, $body = null)
     {
@@ -5381,7 +5273,7 @@ class AdminApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\CompletedRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\CompletedRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function rejectLoginRequestWithHttpInfo($challenge, $body = null)
     {
@@ -5441,6 +5333,18 @@ class AdminApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 404:
+                    if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 case 500:
                     if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
@@ -5480,6 +5384,14 @@ class AdminApi
                     $e->setResponseObject($data);
                     break;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\GenericError',
@@ -5589,22 +5501,18 @@ class AdminApi
             );
         }
 
-        $resourcePath = '/oauth2/auth/requests/login/{challenge}/reject';
+        $resourcePath = '/oauth2/auth/requests/login/reject';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-
-        // path params
+        // query params
         if ($challenge !== null) {
-            $resourcePath = str_replace(
-                '{' . 'challenge' . '}',
-                ObjectSerializer::toPathValue($challenge),
-                $resourcePath
-            );
+            $queryParams['challenge'] = ObjectSerializer::toQueryValue($challenge);
         }
+
 
         // body params
         $_tempBody = null;
@@ -6413,227 +6321,6 @@ class AdminApi
     }
 
     /**
-     * Operation revokeUserLoginCookie
-     *
-     * Logs user out by deleting the session cookie
-     *
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function revokeUserLoginCookie()
-    {
-        $this->revokeUserLoginCookieWithHttpInfo();
-    }
-
-    /**
-     * Operation revokeUserLoginCookieWithHttpInfo
-     *
-     * Logs user out by deleting the session cookie
-     *
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function revokeUserLoginCookieWithHttpInfo()
-    {
-        $request = $this->revokeUserLoginCookieRequest();
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GenericError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GenericError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation revokeUserLoginCookieAsync
-     *
-     * Logs user out by deleting the session cookie
-     *
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function revokeUserLoginCookieAsync()
-    {
-        return $this->revokeUserLoginCookieAsyncWithHttpInfo()
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation revokeUserLoginCookieAsyncWithHttpInfo
-     *
-     * Logs user out by deleting the session cookie
-     *
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function revokeUserLoginCookieAsyncWithHttpInfo()
-    {
-        $returnType = '';
-        $request = $this->revokeUserLoginCookieRequest();
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'revokeUserLoginCookie'
-     *
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function revokeUserLoginCookieRequest()
-    {
-
-        $resourcePath = '/oauth2/auth/sessions/login/revoke';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation updateJsonWebKey
      *
      * Update a JSON Web Key
@@ -7342,7 +7029,7 @@ class AdminApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\OAuth2Client|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
+     * @return \OpenAPI\Client\Model\OAuth2Client|\OpenAPI\Client\Model\GenericError
      */
     public function updateOAuth2Client($id, $body)
     {
@@ -7360,7 +7047,7 @@ class AdminApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\OAuth2Client|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\OAuth2Client|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateOAuth2ClientWithHttpInfo($id, $body)
     {
@@ -7408,30 +7095,6 @@ class AdminApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 401:
-                    if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GenericError', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
-                    if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GenericError', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
                 case 500:
                     if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
@@ -7466,22 +7129,6 @@ class AdminApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\OAuth2Client',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GenericError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

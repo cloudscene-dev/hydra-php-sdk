@@ -58,6 +58,7 @@ class AcceptLoginRequest implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'acr' => 'string',
+        'context' => 'map[string,object]',
         'force_subject_identifier' => 'string',
         'remember' => 'bool',
         'remember_for' => 'int',
@@ -71,6 +72,7 @@ class AcceptLoginRequest implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'acr' => null,
+        'context' => null,
         'force_subject_identifier' => null,
         'remember' => null,
         'remember_for' => 'int64',
@@ -105,6 +107,7 @@ class AcceptLoginRequest implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'acr' => 'acr',
+        'context' => 'context',
         'force_subject_identifier' => 'force_subject_identifier',
         'remember' => 'remember',
         'remember_for' => 'remember_for',
@@ -118,6 +121,7 @@ class AcceptLoginRequest implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'acr' => 'setAcr',
+        'context' => 'setContext',
         'force_subject_identifier' => 'setForceSubjectIdentifier',
         'remember' => 'setRemember',
         'remember_for' => 'setRememberFor',
@@ -131,6 +135,7 @@ class AcceptLoginRequest implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'acr' => 'getAcr',
+        'context' => 'getContext',
         'force_subject_identifier' => 'getForceSubjectIdentifier',
         'remember' => 'getRemember',
         'remember_for' => 'getRememberFor',
@@ -198,6 +203,7 @@ class AcceptLoginRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['acr'] = isset($data['acr']) ? $data['acr'] : null;
+        $this->container['context'] = isset($data['context']) ? $data['context'] : null;
         $this->container['force_subject_identifier'] = isset($data['force_subject_identifier']) ? $data['force_subject_identifier'] : null;
         $this->container['remember'] = isset($data['remember']) ? $data['remember'] : null;
         $this->container['remember_for'] = isset($data['remember_for']) ? $data['remember_for'] : null;
@@ -213,6 +219,9 @@ class AcceptLoginRequest implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['subject'] === null) {
+            $invalidProperties[] = "'subject' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -248,6 +257,30 @@ class AcceptLoginRequest implements ModelInterface, ArrayAccess
     public function setAcr($acr)
     {
         $this->container['acr'] = $acr;
+
+        return $this;
+    }
+
+    /**
+     * Gets context
+     *
+     * @return map[string,object]|null
+     */
+    public function getContext()
+    {
+        return $this->container['context'];
+    }
+
+    /**
+     * Sets context
+     *
+     * @param map[string,object]|null $context Context is an optional object which can hold arbitrary data. The data will be made available when fetching the consent request under the \"context\" field. This is useful in scenarios where login and consent endpoints share data.
+     *
+     * @return $this
+     */
+    public function setContext($context)
+    {
+        $this->container['context'] = $context;
 
         return $this;
     }
@@ -327,7 +360,7 @@ class AcceptLoginRequest implements ModelInterface, ArrayAccess
     /**
      * Gets subject
      *
-     * @return string|null
+     * @return string
      */
     public function getSubject()
     {
@@ -337,7 +370,7 @@ class AcceptLoginRequest implements ModelInterface, ArrayAccess
     /**
      * Sets subject
      *
-     * @param string|null $subject Subject is the user ID of the end-user that authenticated.
+     * @param string $subject Subject is the user ID of the end-user that authenticated.
      *
      * @return $this
      */

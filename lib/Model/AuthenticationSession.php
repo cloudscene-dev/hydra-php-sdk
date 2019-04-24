@@ -36,6 +36,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AuthenticationSession Class Doc Comment
  *
  * @category Class
+ * @description AuthenticationSession AuthenticationSession AuthenticationSession AuthenticationSession AuthenticationSession AuthenticationSession AuthenticationSession AuthenticationSession AuthenticationSession AuthenticationSession AuthenticationSession AuthenticationSession AuthenticationSession AuthenticationSession authentication session
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -229,7 +230,7 @@ class AuthenticationSession implements ModelInterface, ArrayAccess
     /**
      * Sets authenticated_at
      *
-     * @param \DateTime|null $authenticated_at authenticated_at
+     * @param \DateTime|null $authenticated_at authenticated at Format: date-time Format: date-time Format: date-time Format: date-time Format: date-time Format: date-time Format: date-time Format: date-time Format: date-time Format: date-time Format: date-time Format: date-time Format: date-time Format: date-time
      *
      * @return $this
      */
@@ -253,7 +254,7 @@ class AuthenticationSession implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param string|null $id ID
      *
      * @return $this
      */
