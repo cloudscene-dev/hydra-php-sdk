@@ -92,16 +92,16 @@ class AdminApi
      *
      * Accept an consent request
      *
-     * @param  string $challenge challenge (required)
+     * @param  string $consent_challenge consent_challenge (required)
      * @param  \OpenAPI\Client\Model\AcceptConsentRequest $body body (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\CompletedRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
      */
-    public function acceptConsentRequest($challenge, $body = null)
+    public function acceptConsentRequest($consent_challenge, $body = null)
     {
-        list($response) = $this->acceptConsentRequestWithHttpInfo($challenge, $body);
+        list($response) = $this->acceptConsentRequestWithHttpInfo($consent_challenge, $body);
         return $response;
     }
 
@@ -110,16 +110,16 @@ class AdminApi
      *
      * Accept an consent request
      *
-     * @param  string $challenge (required)
+     * @param  string $consent_challenge (required)
      * @param  \OpenAPI\Client\Model\AcceptConsentRequest $body (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\CompletedRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function acceptConsentRequestWithHttpInfo($challenge, $body = null)
+    public function acceptConsentRequestWithHttpInfo($consent_challenge, $body = null)
     {
-        $request = $this->acceptConsentRequestRequest($challenge, $body);
+        $request = $this->acceptConsentRequestRequest($consent_challenge, $body);
 
         try {
             $options = $this->createHttpClientOption();
@@ -239,15 +239,15 @@ class AdminApi
      *
      * Accept an consent request
      *
-     * @param  string $challenge (required)
+     * @param  string $consent_challenge (required)
      * @param  \OpenAPI\Client\Model\AcceptConsentRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function acceptConsentRequestAsync($challenge, $body = null)
+    public function acceptConsentRequestAsync($consent_challenge, $body = null)
     {
-        return $this->acceptConsentRequestAsyncWithHttpInfo($challenge, $body)
+        return $this->acceptConsentRequestAsyncWithHttpInfo($consent_challenge, $body)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -260,16 +260,16 @@ class AdminApi
      *
      * Accept an consent request
      *
-     * @param  string $challenge (required)
+     * @param  string $consent_challenge (required)
      * @param  \OpenAPI\Client\Model\AcceptConsentRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function acceptConsentRequestAsyncWithHttpInfo($challenge, $body = null)
+    public function acceptConsentRequestAsyncWithHttpInfo($consent_challenge, $body = null)
     {
         $returnType = '\OpenAPI\Client\Model\CompletedRequest';
-        $request = $this->acceptConsentRequestRequest($challenge, $body);
+        $request = $this->acceptConsentRequestRequest($consent_challenge, $body);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -308,18 +308,18 @@ class AdminApi
     /**
      * Create request for operation 'acceptConsentRequest'
      *
-     * @param  string $challenge (required)
+     * @param  string $consent_challenge (required)
      * @param  \OpenAPI\Client\Model\AcceptConsentRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function acceptConsentRequestRequest($challenge, $body = null)
+    protected function acceptConsentRequestRequest($consent_challenge, $body = null)
     {
-        // verify the required parameter 'challenge' is set
-        if ($challenge === null || (is_array($challenge) && count($challenge) === 0)) {
+        // verify the required parameter 'consent_challenge' is set
+        if ($consent_challenge === null || (is_array($consent_challenge) && count($consent_challenge) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $challenge when calling acceptConsentRequest'
+                'Missing the required parameter $consent_challenge when calling acceptConsentRequest'
             );
         }
 
@@ -331,8 +331,8 @@ class AdminApi
         $multipart = false;
 
         // query params
-        if ($challenge !== null) {
-            $queryParams['challenge'] = ObjectSerializer::toQueryValue($challenge);
+        if ($consent_challenge !== null) {
+            $queryParams['consent_challenge'] = ObjectSerializer::toQueryValue($consent_challenge);
         }
 
 
@@ -408,16 +408,16 @@ class AdminApi
      *
      * Accept an login request
      *
-     * @param  string $challenge challenge (required)
+     * @param  string $login_challenge login_challenge (required)
      * @param  \OpenAPI\Client\Model\AcceptLoginRequest $body body (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\CompletedRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
      */
-    public function acceptLoginRequest($challenge, $body = null)
+    public function acceptLoginRequest($login_challenge, $body = null)
     {
-        list($response) = $this->acceptLoginRequestWithHttpInfo($challenge, $body);
+        list($response) = $this->acceptLoginRequestWithHttpInfo($login_challenge, $body);
         return $response;
     }
 
@@ -426,16 +426,16 @@ class AdminApi
      *
      * Accept an login request
      *
-     * @param  string $challenge (required)
+     * @param  string $login_challenge (required)
      * @param  \OpenAPI\Client\Model\AcceptLoginRequest $body (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\CompletedRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function acceptLoginRequestWithHttpInfo($challenge, $body = null)
+    public function acceptLoginRequestWithHttpInfo($login_challenge, $body = null)
     {
-        $request = $this->acceptLoginRequestRequest($challenge, $body);
+        $request = $this->acceptLoginRequestRequest($login_challenge, $body);
 
         try {
             $options = $this->createHttpClientOption();
@@ -575,15 +575,15 @@ class AdminApi
      *
      * Accept an login request
      *
-     * @param  string $challenge (required)
+     * @param  string $login_challenge (required)
      * @param  \OpenAPI\Client\Model\AcceptLoginRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function acceptLoginRequestAsync($challenge, $body = null)
+    public function acceptLoginRequestAsync($login_challenge, $body = null)
     {
-        return $this->acceptLoginRequestAsyncWithHttpInfo($challenge, $body)
+        return $this->acceptLoginRequestAsyncWithHttpInfo($login_challenge, $body)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -596,16 +596,16 @@ class AdminApi
      *
      * Accept an login request
      *
-     * @param  string $challenge (required)
+     * @param  string $login_challenge (required)
      * @param  \OpenAPI\Client\Model\AcceptLoginRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function acceptLoginRequestAsyncWithHttpInfo($challenge, $body = null)
+    public function acceptLoginRequestAsyncWithHttpInfo($login_challenge, $body = null)
     {
         $returnType = '\OpenAPI\Client\Model\CompletedRequest';
-        $request = $this->acceptLoginRequestRequest($challenge, $body);
+        $request = $this->acceptLoginRequestRequest($login_challenge, $body);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -644,18 +644,18 @@ class AdminApi
     /**
      * Create request for operation 'acceptLoginRequest'
      *
-     * @param  string $challenge (required)
+     * @param  string $login_challenge (required)
      * @param  \OpenAPI\Client\Model\AcceptLoginRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function acceptLoginRequestRequest($challenge, $body = null)
+    protected function acceptLoginRequestRequest($login_challenge, $body = null)
     {
-        // verify the required parameter 'challenge' is set
-        if ($challenge === null || (is_array($challenge) && count($challenge) === 0)) {
+        // verify the required parameter 'login_challenge' is set
+        if ($login_challenge === null || (is_array($login_challenge) && count($login_challenge) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $challenge when calling acceptLoginRequest'
+                'Missing the required parameter $login_challenge when calling acceptLoginRequest'
             );
         }
 
@@ -667,8 +667,8 @@ class AdminApi
         $multipart = false;
 
         // query params
-        if ($challenge !== null) {
-            $queryParams['challenge'] = ObjectSerializer::toQueryValue($challenge);
+        if ($login_challenge !== null) {
+            $queryParams['login_challenge'] = ObjectSerializer::toQueryValue($login_challenge);
         }
 
 
@@ -686,6 +686,314 @@ class AdminApi
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
                 ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'PUT',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation acceptLogoutRequest
+     *
+     * Accept a logout request
+     *
+     * @param  string $logout_challenge logout_challenge (required)
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\CompletedRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
+     */
+    public function acceptLogoutRequest($logout_challenge)
+    {
+        list($response) = $this->acceptLogoutRequestWithHttpInfo($logout_challenge);
+        return $response;
+    }
+
+    /**
+     * Operation acceptLogoutRequestWithHttpInfo
+     *
+     * Accept a logout request
+     *
+     * @param  string $logout_challenge (required)
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\CompletedRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function acceptLogoutRequestWithHttpInfo($logout_challenge)
+    {
+        $request = $this->acceptLogoutRequestRequest($logout_challenge);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\OpenAPI\Client\Model\CompletedRequest' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\CompletedRequest', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\OpenAPI\Client\Model\CompletedRequest';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\CompletedRequest',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation acceptLogoutRequestAsync
+     *
+     * Accept a logout request
+     *
+     * @param  string $logout_challenge (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function acceptLogoutRequestAsync($logout_challenge)
+    {
+        return $this->acceptLogoutRequestAsyncWithHttpInfo($logout_challenge)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation acceptLogoutRequestAsyncWithHttpInfo
+     *
+     * Accept a logout request
+     *
+     * @param  string $logout_challenge (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function acceptLogoutRequestAsyncWithHttpInfo($logout_challenge)
+    {
+        $returnType = '\OpenAPI\Client\Model\CompletedRequest';
+        $request = $this->acceptLogoutRequestRequest($logout_challenge);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'acceptLogoutRequest'
+     *
+     * @param  string $logout_challenge (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function acceptLogoutRequestRequest($logout_challenge)
+    {
+        // verify the required parameter 'logout_challenge' is set
+        if ($logout_challenge === null || (is_array($logout_challenge) && count($logout_challenge) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $logout_challenge when calling acceptLogoutRequest'
+            );
+        }
+
+        $resourcePath = '/oauth2/auth/requests/logout/accept';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($logout_challenge !== null) {
+            $queryParams['logout_challenge'] = ObjectSerializer::toQueryValue($logout_challenge);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
             );
         }
 
@@ -2375,15 +2683,15 @@ class AdminApi
      *
      * Get consent request information
      *
-     * @param  string $challenge challenge (required)
+     * @param  string $consent_challenge consent_challenge (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\ConsentRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
      */
-    public function getConsentRequest($challenge)
+    public function getConsentRequest($consent_challenge)
     {
-        list($response) = $this->getConsentRequestWithHttpInfo($challenge);
+        list($response) = $this->getConsentRequestWithHttpInfo($consent_challenge);
         return $response;
     }
 
@@ -2392,15 +2700,15 @@ class AdminApi
      *
      * Get consent request information
      *
-     * @param  string $challenge (required)
+     * @param  string $consent_challenge (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\ConsentRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getConsentRequestWithHttpInfo($challenge)
+    public function getConsentRequestWithHttpInfo($consent_challenge)
     {
-        $request = $this->getConsentRequestRequest($challenge);
+        $request = $this->getConsentRequestRequest($consent_challenge);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2540,14 +2848,14 @@ class AdminApi
      *
      * Get consent request information
      *
-     * @param  string $challenge (required)
+     * @param  string $consent_challenge (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getConsentRequestAsync($challenge)
+    public function getConsentRequestAsync($consent_challenge)
     {
-        return $this->getConsentRequestAsyncWithHttpInfo($challenge)
+        return $this->getConsentRequestAsyncWithHttpInfo($consent_challenge)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2560,15 +2868,15 @@ class AdminApi
      *
      * Get consent request information
      *
-     * @param  string $challenge (required)
+     * @param  string $consent_challenge (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getConsentRequestAsyncWithHttpInfo($challenge)
+    public function getConsentRequestAsyncWithHttpInfo($consent_challenge)
     {
         $returnType = '\OpenAPI\Client\Model\ConsentRequest';
-        $request = $this->getConsentRequestRequest($challenge);
+        $request = $this->getConsentRequestRequest($consent_challenge);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2607,17 +2915,17 @@ class AdminApi
     /**
      * Create request for operation 'getConsentRequest'
      *
-     * @param  string $challenge (required)
+     * @param  string $consent_challenge (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getConsentRequestRequest($challenge)
+    protected function getConsentRequestRequest($consent_challenge)
     {
-        // verify the required parameter 'challenge' is set
-        if ($challenge === null || (is_array($challenge) && count($challenge) === 0)) {
+        // verify the required parameter 'consent_challenge' is set
+        if ($consent_challenge === null || (is_array($consent_challenge) && count($consent_challenge) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $challenge when calling getConsentRequest'
+                'Missing the required parameter $consent_challenge when calling getConsentRequest'
             );
         }
 
@@ -2629,8 +2937,8 @@ class AdminApi
         $multipart = false;
 
         // query params
-        if ($challenge !== null) {
-            $queryParams['challenge'] = ObjectSerializer::toQueryValue($challenge);
+        if ($consent_challenge !== null) {
+            $queryParams['consent_challenge'] = ObjectSerializer::toQueryValue($consent_challenge);
         }
 
 
@@ -3366,15 +3674,15 @@ class AdminApi
      *
      * Get an login request
      *
-     * @param  string $challenge challenge (required)
+     * @param  string $login_challenge login_challenge (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\LoginRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
+     * @return \OpenAPI\Client\Model\LoginRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
      */
-    public function getLoginRequest($challenge)
+    public function getLoginRequest($login_challenge)
     {
-        list($response) = $this->getLoginRequestWithHttpInfo($challenge);
+        list($response) = $this->getLoginRequestWithHttpInfo($login_challenge);
         return $response;
     }
 
@@ -3383,15 +3691,15 @@ class AdminApi
      *
      * Get an login request
      *
-     * @param  string $challenge (required)
+     * @param  string $login_challenge (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\LoginRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\LoginRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getLoginRequestWithHttpInfo($challenge)
+    public function getLoginRequestWithHttpInfo($login_challenge)
     {
-        $request = $this->getLoginRequestRequest($challenge);
+        $request = $this->getLoginRequestRequest($login_challenge);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3432,6 +3740,18 @@ class AdminApi
 
                     return [
                         ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\LoginRequest', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GenericError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -3497,6 +3817,14 @@ class AdminApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3531,14 +3859,14 @@ class AdminApi
      *
      * Get an login request
      *
-     * @param  string $challenge (required)
+     * @param  string $login_challenge (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getLoginRequestAsync($challenge)
+    public function getLoginRequestAsync($login_challenge)
     {
-        return $this->getLoginRequestAsyncWithHttpInfo($challenge)
+        return $this->getLoginRequestAsyncWithHttpInfo($login_challenge)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3551,15 +3879,15 @@ class AdminApi
      *
      * Get an login request
      *
-     * @param  string $challenge (required)
+     * @param  string $login_challenge (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getLoginRequestAsyncWithHttpInfo($challenge)
+    public function getLoginRequestAsyncWithHttpInfo($login_challenge)
     {
         $returnType = '\OpenAPI\Client\Model\LoginRequest';
-        $request = $this->getLoginRequestRequest($challenge);
+        $request = $this->getLoginRequestRequest($login_challenge);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3598,17 +3926,17 @@ class AdminApi
     /**
      * Create request for operation 'getLoginRequest'
      *
-     * @param  string $challenge (required)
+     * @param  string $login_challenge (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getLoginRequestRequest($challenge)
+    protected function getLoginRequestRequest($login_challenge)
     {
-        // verify the required parameter 'challenge' is set
-        if ($challenge === null || (is_array($challenge) && count($challenge) === 0)) {
+        // verify the required parameter 'login_challenge' is set
+        if ($login_challenge === null || (is_array($login_challenge) && count($login_challenge) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $challenge when calling getLoginRequest'
+                'Missing the required parameter $login_challenge when calling getLoginRequest'
             );
         }
 
@@ -3620,8 +3948,316 @@ class AdminApi
         $multipart = false;
 
         // query params
-        if ($challenge !== null) {
-            $queryParams['challenge'] = ObjectSerializer::toQueryValue($challenge);
+        if ($login_challenge !== null) {
+            $queryParams['login_challenge'] = ObjectSerializer::toQueryValue($login_challenge);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getLogoutRequest
+     *
+     * Get a logout request
+     *
+     * @param  string $logout_challenge logout_challenge (required)
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\LogoutRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
+     */
+    public function getLogoutRequest($logout_challenge)
+    {
+        list($response) = $this->getLogoutRequestWithHttpInfo($logout_challenge);
+        return $response;
+    }
+
+    /**
+     * Operation getLogoutRequestWithHttpInfo
+     *
+     * Get a logout request
+     *
+     * @param  string $logout_challenge (required)
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\LogoutRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getLogoutRequestWithHttpInfo($logout_challenge)
+    {
+        $request = $this->getLogoutRequestRequest($logout_challenge);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            switch($statusCode) {
+                case 200:
+                    if ('\OpenAPI\Client\Model\LogoutRequest' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\LogoutRequest', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GenericError', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\OpenAPI\Client\Model\LogoutRequest';
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\LogoutRequest',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getLogoutRequestAsync
+     *
+     * Get a logout request
+     *
+     * @param  string $logout_challenge (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getLogoutRequestAsync($logout_challenge)
+    {
+        return $this->getLogoutRequestAsyncWithHttpInfo($logout_challenge)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getLogoutRequestAsyncWithHttpInfo
+     *
+     * Get a logout request
+     *
+     * @param  string $logout_challenge (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getLogoutRequestAsyncWithHttpInfo($logout_challenge)
+    {
+        $returnType = '\OpenAPI\Client\Model\LogoutRequest';
+        $request = $this->getLogoutRequestRequest($logout_challenge);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getLogoutRequest'
+     *
+     * @param  string $logout_challenge (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getLogoutRequestRequest($logout_challenge)
+    {
+        // verify the required parameter 'logout_challenge' is set
+        if ($logout_challenge === null || (is_array($logout_challenge) && count($logout_challenge) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $logout_challenge when calling getLogoutRequest'
+            );
+        }
+
+        $resourcePath = '/oauth2/auth/requests/logout';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($logout_challenge !== null) {
+            $queryParams['logout_challenge'] = ObjectSerializer::toQueryValue($logout_challenge);
         }
 
 
@@ -4006,7 +4642,7 @@ class AdminApi
      *
      * Introspect OAuth2 tokens
      *
-     * @param  string $token The string value of the token. For access tokens, this is the \\\&quot;access_token\\\&quot; value returned from the token endpoint defined in OAuth 2.0 [RFC6749], Section 5.1. This endpoint DOES NOT accept refresh tokens for validation. (required)
+     * @param  string $token The string value of the token. For access tokens, this is the \\\&quot;access_token\\\&quot; value returned from the token endpoint defined in OAuth 2.0. For refresh tokens, this is the \\\&quot;refresh_token\\\&quot; value returned. (required)
      * @param  string $scope An optional, space separated list of required scopes. If the access token was not granted one of the scopes, the result of active will be false. (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
@@ -4024,7 +4660,7 @@ class AdminApi
      *
      * Introspect OAuth2 tokens
      *
-     * @param  string $token The string value of the token. For access tokens, this is the \\\&quot;access_token\\\&quot; value returned from the token endpoint defined in OAuth 2.0 [RFC6749], Section 5.1. This endpoint DOES NOT accept refresh tokens for validation. (required)
+     * @param  string $token The string value of the token. For access tokens, this is the \\\&quot;access_token\\\&quot; value returned from the token endpoint defined in OAuth 2.0. For refresh tokens, this is the \\\&quot;refresh_token\\\&quot; value returned. (required)
      * @param  string $scope An optional, space separated list of required scopes. If the access token was not granted one of the scopes, the result of active will be false. (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
@@ -4153,7 +4789,7 @@ class AdminApi
      *
      * Introspect OAuth2 tokens
      *
-     * @param  string $token The string value of the token. For access tokens, this is the \\\&quot;access_token\\\&quot; value returned from the token endpoint defined in OAuth 2.0 [RFC6749], Section 5.1. This endpoint DOES NOT accept refresh tokens for validation. (required)
+     * @param  string $token The string value of the token. For access tokens, this is the \\\&quot;access_token\\\&quot; value returned from the token endpoint defined in OAuth 2.0. For refresh tokens, this is the \\\&quot;refresh_token\\\&quot; value returned. (required)
      * @param  string $scope An optional, space separated list of required scopes. If the access token was not granted one of the scopes, the result of active will be false. (optional)
      *
      * @throws \InvalidArgumentException
@@ -4174,7 +4810,7 @@ class AdminApi
      *
      * Introspect OAuth2 tokens
      *
-     * @param  string $token The string value of the token. For access tokens, this is the \\\&quot;access_token\\\&quot; value returned from the token endpoint defined in OAuth 2.0 [RFC6749], Section 5.1. This endpoint DOES NOT accept refresh tokens for validation. (required)
+     * @param  string $token The string value of the token. For access tokens, this is the \\\&quot;access_token\\\&quot; value returned from the token endpoint defined in OAuth 2.0. For refresh tokens, this is the \\\&quot;refresh_token\\\&quot; value returned. (required)
      * @param  string $scope An optional, space separated list of required scopes. If the access token was not granted one of the scopes, the result of active will be false. (optional)
      *
      * @throws \InvalidArgumentException
@@ -4222,7 +4858,7 @@ class AdminApi
     /**
      * Create request for operation 'introspectOAuth2Token'
      *
-     * @param  string $token The string value of the token. For access tokens, this is the \\\&quot;access_token\\\&quot; value returned from the token endpoint defined in OAuth 2.0 [RFC6749], Section 5.1. This endpoint DOES NOT accept refresh tokens for validation. (required)
+     * @param  string $token The string value of the token. For access tokens, this is the \\\&quot;access_token\\\&quot; value returned from the token endpoint defined in OAuth 2.0. For refresh tokens, this is the \\\&quot;refresh_token\\\&quot; value returned. (required)
      * @param  string $scope An optional, space separated list of required scopes. If the access token was not granted one of the scopes, the result of active will be false. (optional)
      *
      * @throws \InvalidArgumentException
@@ -4618,36 +5254,36 @@ class AdminApi
     }
 
     /**
-     * Operation listUserConsentSessions
+     * Operation listSubjectConsentSessions
      *
-     * Lists all consent sessions of a user
+     * Lists all consent sessions of a subject
      *
-     * @param  string $user user (required)
+     * @param  string $subject subject (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\PreviousConsentSession[]|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
+     * @return \OpenAPI\Client\Model\PreviousConsentSession[]|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
      */
-    public function listUserConsentSessions($user)
+    public function listSubjectConsentSessions($subject)
     {
-        list($response) = $this->listUserConsentSessionsWithHttpInfo($user);
+        list($response) = $this->listSubjectConsentSessionsWithHttpInfo($subject);
         return $response;
     }
 
     /**
-     * Operation listUserConsentSessionsWithHttpInfo
+     * Operation listSubjectConsentSessionsWithHttpInfo
      *
-     * Lists all consent sessions of a user
+     * Lists all consent sessions of a subject
      *
-     * @param  string $user (required)
+     * @param  string $subject (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\PreviousConsentSession[]|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\PreviousConsentSession[]|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listUserConsentSessionsWithHttpInfo($user)
+    public function listSubjectConsentSessionsWithHttpInfo($subject)
     {
-        $request = $this->listUserConsentSessionsRequest($user);
+        $request = $this->listSubjectConsentSessionsRequest($subject);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4688,6 +5324,18 @@ class AdminApi
 
                     return [
                         ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\PreviousConsentSession[]', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GenericError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -4741,6 +5389,14 @@ class AdminApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4763,18 +5419,18 @@ class AdminApi
     }
 
     /**
-     * Operation listUserConsentSessionsAsync
+     * Operation listSubjectConsentSessionsAsync
      *
-     * Lists all consent sessions of a user
+     * Lists all consent sessions of a subject
      *
-     * @param  string $user (required)
+     * @param  string $subject (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listUserConsentSessionsAsync($user)
+    public function listSubjectConsentSessionsAsync($subject)
     {
-        return $this->listUserConsentSessionsAsyncWithHttpInfo($user)
+        return $this->listSubjectConsentSessionsAsyncWithHttpInfo($subject)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4783,19 +5439,19 @@ class AdminApi
     }
 
     /**
-     * Operation listUserConsentSessionsAsyncWithHttpInfo
+     * Operation listSubjectConsentSessionsAsyncWithHttpInfo
      *
-     * Lists all consent sessions of a user
+     * Lists all consent sessions of a subject
      *
-     * @param  string $user (required)
+     * @param  string $subject (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listUserConsentSessionsAsyncWithHttpInfo($user)
+    public function listSubjectConsentSessionsAsyncWithHttpInfo($subject)
     {
         $returnType = '\OpenAPI\Client\Model\PreviousConsentSession[]';
-        $request = $this->listUserConsentSessionsRequest($user);
+        $request = $this->listSubjectConsentSessionsRequest($subject);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4832,38 +5488,34 @@ class AdminApi
     }
 
     /**
-     * Create request for operation 'listUserConsentSessions'
+     * Create request for operation 'listSubjectConsentSessions'
      *
-     * @param  string $user (required)
+     * @param  string $subject (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function listUserConsentSessionsRequest($user)
+    protected function listSubjectConsentSessionsRequest($subject)
     {
-        // verify the required parameter 'user' is set
-        if ($user === null || (is_array($user) && count($user) === 0)) {
+        // verify the required parameter 'subject' is set
+        if ($subject === null || (is_array($subject) && count($subject) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $user when calling listUserConsentSessions'
+                'Missing the required parameter $subject when calling listSubjectConsentSessions'
             );
         }
 
-        $resourcePath = '/oauth2/auth/sessions/consent/{user}';
+        $resourcePath = '/oauth2/auth/sessions/consent';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-
-        // path params
-        if ($user !== null) {
-            $resourcePath = str_replace(
-                '{' . 'user' . '}',
-                ObjectSerializer::toPathValue($user),
-                $resourcePath
-            );
+        // query params
+        if ($subject !== null) {
+            $queryParams['subject'] = ObjectSerializer::toQueryValue($subject);
         }
+
 
         // body params
         $_tempBody = null;
@@ -4934,16 +5586,16 @@ class AdminApi
      *
      * Reject an consent request
      *
-     * @param  string $challenge challenge (required)
+     * @param  string $consent_challenge consent_challenge (required)
      * @param  \OpenAPI\Client\Model\RejectRequest $body body (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\CompletedRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
      */
-    public function rejectConsentRequest($challenge, $body = null)
+    public function rejectConsentRequest($consent_challenge, $body = null)
     {
-        list($response) = $this->rejectConsentRequestWithHttpInfo($challenge, $body);
+        list($response) = $this->rejectConsentRequestWithHttpInfo($consent_challenge, $body);
         return $response;
     }
 
@@ -4952,16 +5604,16 @@ class AdminApi
      *
      * Reject an consent request
      *
-     * @param  string $challenge (required)
+     * @param  string $consent_challenge (required)
      * @param  \OpenAPI\Client\Model\RejectRequest $body (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\CompletedRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function rejectConsentRequestWithHttpInfo($challenge, $body = null)
+    public function rejectConsentRequestWithHttpInfo($consent_challenge, $body = null)
     {
-        $request = $this->rejectConsentRequestRequest($challenge, $body);
+        $request = $this->rejectConsentRequestRequest($consent_challenge, $body);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5081,15 +5733,15 @@ class AdminApi
      *
      * Reject an consent request
      *
-     * @param  string $challenge (required)
+     * @param  string $consent_challenge (required)
      * @param  \OpenAPI\Client\Model\RejectRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function rejectConsentRequestAsync($challenge, $body = null)
+    public function rejectConsentRequestAsync($consent_challenge, $body = null)
     {
-        return $this->rejectConsentRequestAsyncWithHttpInfo($challenge, $body)
+        return $this->rejectConsentRequestAsyncWithHttpInfo($consent_challenge, $body)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5102,16 +5754,16 @@ class AdminApi
      *
      * Reject an consent request
      *
-     * @param  string $challenge (required)
+     * @param  string $consent_challenge (required)
      * @param  \OpenAPI\Client\Model\RejectRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function rejectConsentRequestAsyncWithHttpInfo($challenge, $body = null)
+    public function rejectConsentRequestAsyncWithHttpInfo($consent_challenge, $body = null)
     {
         $returnType = '\OpenAPI\Client\Model\CompletedRequest';
-        $request = $this->rejectConsentRequestRequest($challenge, $body);
+        $request = $this->rejectConsentRequestRequest($consent_challenge, $body);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5150,18 +5802,18 @@ class AdminApi
     /**
      * Create request for operation 'rejectConsentRequest'
      *
-     * @param  string $challenge (required)
+     * @param  string $consent_challenge (required)
      * @param  \OpenAPI\Client\Model\RejectRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function rejectConsentRequestRequest($challenge, $body = null)
+    protected function rejectConsentRequestRequest($consent_challenge, $body = null)
     {
-        // verify the required parameter 'challenge' is set
-        if ($challenge === null || (is_array($challenge) && count($challenge) === 0)) {
+        // verify the required parameter 'consent_challenge' is set
+        if ($consent_challenge === null || (is_array($consent_challenge) && count($consent_challenge) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $challenge when calling rejectConsentRequest'
+                'Missing the required parameter $consent_challenge when calling rejectConsentRequest'
             );
         }
 
@@ -5173,8 +5825,8 @@ class AdminApi
         $multipart = false;
 
         // query params
-        if ($challenge !== null) {
-            $queryParams['challenge'] = ObjectSerializer::toQueryValue($challenge);
+        if ($consent_challenge !== null) {
+            $queryParams['consent_challenge'] = ObjectSerializer::toQueryValue($consent_challenge);
         }
 
 
@@ -5250,16 +5902,16 @@ class AdminApi
      *
      * Reject a login request
      *
-     * @param  string $challenge challenge (required)
+     * @param  string $login_challenge login_challenge (required)
      * @param  \OpenAPI\Client\Model\RejectRequest $body body (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\CompletedRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
      */
-    public function rejectLoginRequest($challenge, $body = null)
+    public function rejectLoginRequest($login_challenge, $body = null)
     {
-        list($response) = $this->rejectLoginRequestWithHttpInfo($challenge, $body);
+        list($response) = $this->rejectLoginRequestWithHttpInfo($login_challenge, $body);
         return $response;
     }
 
@@ -5268,16 +5920,16 @@ class AdminApi
      *
      * Reject a login request
      *
-     * @param  string $challenge (required)
+     * @param  string $login_challenge (required)
      * @param  \OpenAPI\Client\Model\RejectRequest $body (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\CompletedRequest|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function rejectLoginRequestWithHttpInfo($challenge, $body = null)
+    public function rejectLoginRequestWithHttpInfo($login_challenge, $body = null)
     {
-        $request = $this->rejectLoginRequestRequest($challenge, $body);
+        $request = $this->rejectLoginRequestRequest($login_challenge, $body);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5417,15 +6069,15 @@ class AdminApi
      *
      * Reject a login request
      *
-     * @param  string $challenge (required)
+     * @param  string $login_challenge (required)
      * @param  \OpenAPI\Client\Model\RejectRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function rejectLoginRequestAsync($challenge, $body = null)
+    public function rejectLoginRequestAsync($login_challenge, $body = null)
     {
-        return $this->rejectLoginRequestAsyncWithHttpInfo($challenge, $body)
+        return $this->rejectLoginRequestAsyncWithHttpInfo($login_challenge, $body)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5438,16 +6090,16 @@ class AdminApi
      *
      * Reject a login request
      *
-     * @param  string $challenge (required)
+     * @param  string $login_challenge (required)
      * @param  \OpenAPI\Client\Model\RejectRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function rejectLoginRequestAsyncWithHttpInfo($challenge, $body = null)
+    public function rejectLoginRequestAsyncWithHttpInfo($login_challenge, $body = null)
     {
         $returnType = '\OpenAPI\Client\Model\CompletedRequest';
-        $request = $this->rejectLoginRequestRequest($challenge, $body);
+        $request = $this->rejectLoginRequestRequest($login_challenge, $body);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5486,18 +6138,18 @@ class AdminApi
     /**
      * Create request for operation 'rejectLoginRequest'
      *
-     * @param  string $challenge (required)
+     * @param  string $login_challenge (required)
      * @param  \OpenAPI\Client\Model\RejectRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function rejectLoginRequestRequest($challenge, $body = null)
+    protected function rejectLoginRequestRequest($login_challenge, $body = null)
     {
-        // verify the required parameter 'challenge' is set
-        if ($challenge === null || (is_array($challenge) && count($challenge) === 0)) {
+        // verify the required parameter 'login_challenge' is set
+        if ($login_challenge === null || (is_array($login_challenge) && count($login_challenge) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $challenge when calling rejectLoginRequest'
+                'Missing the required parameter $login_challenge when calling rejectLoginRequest'
             );
         }
 
@@ -5509,8 +6161,8 @@ class AdminApi
         $multipart = false;
 
         // query params
-        if ($challenge !== null) {
-            $queryParams['challenge'] = ObjectSerializer::toQueryValue($challenge);
+        if ($login_challenge !== null) {
+            $queryParams['login_challenge'] = ObjectSerializer::toQueryValue($login_challenge);
         }
 
 
@@ -5582,35 +6234,37 @@ class AdminApi
     }
 
     /**
-     * Operation revokeAllUserConsentSessions
+     * Operation rejectLogoutRequest
      *
-     * Revokes all previous consent sessions of a user
+     * Reject a logout request
      *
-     * @param  string $user user (required)
+     * @param  string $logout_challenge logout_challenge (required)
+     * @param  \OpenAPI\Client\Model\RejectRequest $body body (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function revokeAllUserConsentSessions($user)
+    public function rejectLogoutRequest($logout_challenge, $body = null)
     {
-        $this->revokeAllUserConsentSessionsWithHttpInfo($user);
+        $this->rejectLogoutRequestWithHttpInfo($logout_challenge, $body);
     }
 
     /**
-     * Operation revokeAllUserConsentSessionsWithHttpInfo
+     * Operation rejectLogoutRequestWithHttpInfo
      *
-     * Revokes all previous consent sessions of a user
+     * Reject a logout request
      *
-     * @param  string $user (required)
+     * @param  string $logout_challenge (required)
+     * @param  \OpenAPI\Client\Model\RejectRequest $body (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function revokeAllUserConsentSessionsWithHttpInfo($user)
+    public function rejectLogoutRequestWithHttpInfo($logout_challenge, $body = null)
     {
-        $request = $this->revokeAllUserConsentSessionsRequest($user);
+        $request = $this->rejectLogoutRequestRequest($logout_challenge, $body);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5666,18 +6320,19 @@ class AdminApi
     }
 
     /**
-     * Operation revokeAllUserConsentSessionsAsync
+     * Operation rejectLogoutRequestAsync
      *
-     * Revokes all previous consent sessions of a user
+     * Reject a logout request
      *
-     * @param  string $user (required)
+     * @param  string $logout_challenge (required)
+     * @param  \OpenAPI\Client\Model\RejectRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function revokeAllUserConsentSessionsAsync($user)
+    public function rejectLogoutRequestAsync($logout_challenge, $body = null)
     {
-        return $this->revokeAllUserConsentSessionsAsyncWithHttpInfo($user)
+        return $this->rejectLogoutRequestAsyncWithHttpInfo($logout_challenge, $body)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5686,19 +6341,20 @@ class AdminApi
     }
 
     /**
-     * Operation revokeAllUserConsentSessionsAsyncWithHttpInfo
+     * Operation rejectLogoutRequestAsyncWithHttpInfo
      *
-     * Revokes all previous consent sessions of a user
+     * Reject a logout request
      *
-     * @param  string $user (required)
+     * @param  string $logout_challenge (required)
+     * @param  \OpenAPI\Client\Model\RejectRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function revokeAllUserConsentSessionsAsyncWithHttpInfo($user)
+    public function rejectLogoutRequestAsyncWithHttpInfo($logout_challenge, $body = null)
     {
         $returnType = '';
-        $request = $this->revokeAllUserConsentSessionsRequest($user);
+        $request = $this->rejectLogoutRequestRequest($logout_challenge, $body);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5724,41 +6380,41 @@ class AdminApi
     }
 
     /**
-     * Create request for operation 'revokeAllUserConsentSessions'
+     * Create request for operation 'rejectLogoutRequest'
      *
-     * @param  string $user (required)
+     * @param  string $logout_challenge (required)
+     * @param  \OpenAPI\Client\Model\RejectRequest $body (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function revokeAllUserConsentSessionsRequest($user)
+    protected function rejectLogoutRequestRequest($logout_challenge, $body = null)
     {
-        // verify the required parameter 'user' is set
-        if ($user === null || (is_array($user) && count($user) === 0)) {
+        // verify the required parameter 'logout_challenge' is set
+        if ($logout_challenge === null || (is_array($logout_challenge) && count($logout_challenge) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $user when calling revokeAllUserConsentSessions'
+                'Missing the required parameter $logout_challenge when calling rejectLogoutRequest'
             );
         }
 
-        $resourcePath = '/oauth2/auth/sessions/consent/{user}';
+        $resourcePath = '/oauth2/auth/requests/logout/reject';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-
-        // path params
-        if ($user !== null) {
-            $resourcePath = str_replace(
-                '{' . 'user' . '}',
-                ObjectSerializer::toPathValue($user),
-                $resourcePath
-            );
+        // query params
+        if ($logout_challenge !== null) {
+            $queryParams['logout_challenge'] = ObjectSerializer::toQueryValue($logout_challenge);
         }
+
 
         // body params
         $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -5767,7 +6423,7 @@ class AdminApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                []
+                ['application/json', 'application/x-www-form-urlencoded']
             );
         }
 
@@ -5814,7 +6470,7 @@ class AdminApi
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
-            'DELETE',
+            'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -5824,33 +6480,33 @@ class AdminApi
     /**
      * Operation revokeAuthenticationSession
      *
-     * Invalidates a user's authentication session
+     * Invalidates all login sessions of a certain user Invalidates a subject's authentication session
      *
-     * @param  string $user user (required)
+     * @param  string $subject subject (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function revokeAuthenticationSession($user)
+    public function revokeAuthenticationSession($subject)
     {
-        $this->revokeAuthenticationSessionWithHttpInfo($user);
+        $this->revokeAuthenticationSessionWithHttpInfo($subject);
     }
 
     /**
      * Operation revokeAuthenticationSessionWithHttpInfo
      *
-     * Invalidates a user's authentication session
+     * Invalidates all login sessions of a certain user Invalidates a subject's authentication session
      *
-     * @param  string $user (required)
+     * @param  string $subject (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function revokeAuthenticationSessionWithHttpInfo($user)
+    public function revokeAuthenticationSessionWithHttpInfo($subject)
     {
-        $request = $this->revokeAuthenticationSessionRequest($user);
+        $request = $this->revokeAuthenticationSessionRequest($subject);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5884,6 +6540,14 @@ class AdminApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -5908,16 +6572,16 @@ class AdminApi
     /**
      * Operation revokeAuthenticationSessionAsync
      *
-     * Invalidates a user's authentication session
+     * Invalidates all login sessions of a certain user Invalidates a subject's authentication session
      *
-     * @param  string $user (required)
+     * @param  string $subject (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function revokeAuthenticationSessionAsync($user)
+    public function revokeAuthenticationSessionAsync($subject)
     {
-        return $this->revokeAuthenticationSessionAsyncWithHttpInfo($user)
+        return $this->revokeAuthenticationSessionAsyncWithHttpInfo($subject)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5928,17 +6592,17 @@ class AdminApi
     /**
      * Operation revokeAuthenticationSessionAsyncWithHttpInfo
      *
-     * Invalidates a user's authentication session
+     * Invalidates all login sessions of a certain user Invalidates a subject's authentication session
      *
-     * @param  string $user (required)
+     * @param  string $subject (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function revokeAuthenticationSessionAsyncWithHttpInfo($user)
+    public function revokeAuthenticationSessionAsyncWithHttpInfo($subject)
     {
         $returnType = '';
-        $request = $this->revokeAuthenticationSessionRequest($user);
+        $request = $this->revokeAuthenticationSessionRequest($subject);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5966,36 +6630,32 @@ class AdminApi
     /**
      * Create request for operation 'revokeAuthenticationSession'
      *
-     * @param  string $user (required)
+     * @param  string $subject (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function revokeAuthenticationSessionRequest($user)
+    protected function revokeAuthenticationSessionRequest($subject)
     {
-        // verify the required parameter 'user' is set
-        if ($user === null || (is_array($user) && count($user) === 0)) {
+        // verify the required parameter 'subject' is set
+        if ($subject === null || (is_array($subject) && count($subject) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $user when calling revokeAuthenticationSession'
+                'Missing the required parameter $subject when calling revokeAuthenticationSession'
             );
         }
 
-        $resourcePath = '/oauth2/auth/sessions/login/{user}';
+        $resourcePath = '/oauth2/auth/sessions/login';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-
-        // path params
-        if ($user !== null) {
-            $resourcePath = str_replace(
-                '{' . 'user' . '}',
-                ObjectSerializer::toPathValue($user),
-                $resourcePath
-            );
+        // query params
+        if ($subject !== null) {
+            $queryParams['subject'] = ObjectSerializer::toQueryValue($subject);
         }
+
 
         // body params
         $_tempBody = null;
@@ -6062,37 +6722,37 @@ class AdminApi
     }
 
     /**
-     * Operation revokeUserClientConsentSessions
+     * Operation revokeConsentSessions
      *
-     * Revokes consent sessions of a user for a specific OAuth 2.0 Client
+     * Revokes consent sessions of a subject for a specific OAuth 2.0 Client
      *
-     * @param  string $user user (required)
-     * @param  string $client client (required)
+     * @param  string $subject The subject (Subject) who&#39;s consent sessions should be deleted. (required)
+     * @param  string $client If set, deletes only those consent sessions by the Subject that have been granted to the specified OAuth 2.0 Client ID (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function revokeUserClientConsentSessions($user, $client)
+    public function revokeConsentSessions($subject, $client = null)
     {
-        $this->revokeUserClientConsentSessionsWithHttpInfo($user, $client);
+        $this->revokeConsentSessionsWithHttpInfo($subject, $client);
     }
 
     /**
-     * Operation revokeUserClientConsentSessionsWithHttpInfo
+     * Operation revokeConsentSessionsWithHttpInfo
      *
-     * Revokes consent sessions of a user for a specific OAuth 2.0 Client
+     * Revokes consent sessions of a subject for a specific OAuth 2.0 Client
      *
-     * @param  string $user (required)
-     * @param  string $client (required)
+     * @param  string $subject The subject (Subject) who&#39;s consent sessions should be deleted. (required)
+     * @param  string $client If set, deletes only those consent sessions by the Subject that have been granted to the specified OAuth 2.0 Client ID (optional)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function revokeUserClientConsentSessionsWithHttpInfo($user, $client)
+    public function revokeConsentSessionsWithHttpInfo($subject, $client = null)
     {
-        $request = $this->revokeUserClientConsentSessionsRequest($user, $client);
+        $request = $this->revokeConsentSessionsRequest($subject, $client);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6126,6 +6786,14 @@ class AdminApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\GenericError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -6148,19 +6816,19 @@ class AdminApi
     }
 
     /**
-     * Operation revokeUserClientConsentSessionsAsync
+     * Operation revokeConsentSessionsAsync
      *
-     * Revokes consent sessions of a user for a specific OAuth 2.0 Client
+     * Revokes consent sessions of a subject for a specific OAuth 2.0 Client
      *
-     * @param  string $user (required)
-     * @param  string $client (required)
+     * @param  string $subject The subject (Subject) who&#39;s consent sessions should be deleted. (required)
+     * @param  string $client If set, deletes only those consent sessions by the Subject that have been granted to the specified OAuth 2.0 Client ID (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function revokeUserClientConsentSessionsAsync($user, $client)
+    public function revokeConsentSessionsAsync($subject, $client = null)
     {
-        return $this->revokeUserClientConsentSessionsAsyncWithHttpInfo($user, $client)
+        return $this->revokeConsentSessionsAsyncWithHttpInfo($subject, $client)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6169,20 +6837,20 @@ class AdminApi
     }
 
     /**
-     * Operation revokeUserClientConsentSessionsAsyncWithHttpInfo
+     * Operation revokeConsentSessionsAsyncWithHttpInfo
      *
-     * Revokes consent sessions of a user for a specific OAuth 2.0 Client
+     * Revokes consent sessions of a subject for a specific OAuth 2.0 Client
      *
-     * @param  string $user (required)
-     * @param  string $client (required)
+     * @param  string $subject The subject (Subject) who&#39;s consent sessions should be deleted. (required)
+     * @param  string $client If set, deletes only those consent sessions by the Subject that have been granted to the specified OAuth 2.0 Client ID (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function revokeUserClientConsentSessionsAsyncWithHttpInfo($user, $client)
+    public function revokeConsentSessionsAsyncWithHttpInfo($subject, $client = null)
     {
         $returnType = '';
-        $request = $this->revokeUserClientConsentSessionsRequest($user, $client);
+        $request = $this->revokeConsentSessionsRequest($subject, $client);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6208,53 +6876,39 @@ class AdminApi
     }
 
     /**
-     * Create request for operation 'revokeUserClientConsentSessions'
+     * Create request for operation 'revokeConsentSessions'
      *
-     * @param  string $user (required)
-     * @param  string $client (required)
+     * @param  string $subject The subject (Subject) who&#39;s consent sessions should be deleted. (required)
+     * @param  string $client If set, deletes only those consent sessions by the Subject that have been granted to the specified OAuth 2.0 Client ID (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function revokeUserClientConsentSessionsRequest($user, $client)
+    protected function revokeConsentSessionsRequest($subject, $client = null)
     {
-        // verify the required parameter 'user' is set
-        if ($user === null || (is_array($user) && count($user) === 0)) {
+        // verify the required parameter 'subject' is set
+        if ($subject === null || (is_array($subject) && count($subject) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $user when calling revokeUserClientConsentSessions'
-            );
-        }
-        // verify the required parameter 'client' is set
-        if ($client === null || (is_array($client) && count($client) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $client when calling revokeUserClientConsentSessions'
+                'Missing the required parameter $subject when calling revokeConsentSessions'
             );
         }
 
-        $resourcePath = '/oauth2/auth/sessions/consent/{user}/{client}';
+        $resourcePath = '/oauth2/auth/sessions/consent';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-
-        // path params
-        if ($user !== null) {
-            $resourcePath = str_replace(
-                '{' . 'user' . '}',
-                ObjectSerializer::toPathValue($user),
-                $resourcePath
-            );
+        // query params
+        if ($subject !== null) {
+            $queryParams['subject'] = ObjectSerializer::toQueryValue($subject);
         }
-        // path params
+        // query params
         if ($client !== null) {
-            $resourcePath = str_replace(
-                '{' . 'client' . '}',
-                ObjectSerializer::toPathValue($client),
-                $resourcePath
-            );
+            $queryParams['client'] = ObjectSerializer::toQueryValue($client);
         }
+
 
         // body params
         $_tempBody = null;

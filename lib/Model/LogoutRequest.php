@@ -1,6 +1,6 @@
 <?php
 /**
- * PreviousConsentSession
+ * LogoutRequest
  *
  * PHP version 5
  *
@@ -33,15 +33,14 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * PreviousConsentSession Class Doc Comment
+ * LogoutRequest Class Doc Comment
  *
  * @category Class
- * @description The response used to return used consent requests same as HandledLoginRequest, just with consent_request exposed as json
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class PreviousConsentSession implements ModelInterface, ArrayAccess
+class LogoutRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class PreviousConsentSession implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PreviousConsentSession';
+    protected static $openAPIModelName = 'logoutRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +57,10 @@ class PreviousConsentSession implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'consent_request' => '\OpenAPI\Client\Model\ConsentRequest',
-        'grant_access_token_audience' => 'string[]',
-        'grant_scope' => 'string[]',
-        'remember' => 'bool',
-        'remember_for' => 'int',
-        'session' => '\OpenAPI\Client\Model\ConsentRequestSession'
+        'request_url' => 'string',
+        'rp_initiated' => 'bool',
+        'sid' => 'string',
+        'subject' => 'string'
     ];
 
     /**
@@ -72,12 +69,10 @@ class PreviousConsentSession implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'consent_request' => null,
-        'grant_access_token_audience' => null,
-        'grant_scope' => null,
-        'remember' => null,
-        'remember_for' => 'int64',
-        'session' => null
+        'request_url' => null,
+        'rp_initiated' => null,
+        'sid' => null,
+        'subject' => null
     ];
 
     /**
@@ -107,12 +102,10 @@ class PreviousConsentSession implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'consent_request' => 'consent_request',
-        'grant_access_token_audience' => 'grant_access_token_audience',
-        'grant_scope' => 'grant_scope',
-        'remember' => 'remember',
-        'remember_for' => 'remember_for',
-        'session' => 'session'
+        'request_url' => 'request_url',
+        'rp_initiated' => 'rp_initiated',
+        'sid' => 'sid',
+        'subject' => 'subject'
     ];
 
     /**
@@ -121,12 +114,10 @@ class PreviousConsentSession implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'consent_request' => 'setConsentRequest',
-        'grant_access_token_audience' => 'setGrantAccessTokenAudience',
-        'grant_scope' => 'setGrantScope',
-        'remember' => 'setRemember',
-        'remember_for' => 'setRememberFor',
-        'session' => 'setSession'
+        'request_url' => 'setRequestUrl',
+        'rp_initiated' => 'setRpInitiated',
+        'sid' => 'setSid',
+        'subject' => 'setSubject'
     ];
 
     /**
@@ -135,12 +126,10 @@ class PreviousConsentSession implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'consent_request' => 'getConsentRequest',
-        'grant_access_token_audience' => 'getGrantAccessTokenAudience',
-        'grant_scope' => 'getGrantScope',
-        'remember' => 'getRemember',
-        'remember_for' => 'getRememberFor',
-        'session' => 'getSession'
+        'request_url' => 'getRequestUrl',
+        'rp_initiated' => 'getRpInitiated',
+        'sid' => 'getSid',
+        'subject' => 'getSubject'
     ];
 
     /**
@@ -203,12 +192,10 @@ class PreviousConsentSession implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['consent_request'] = isset($data['consent_request']) ? $data['consent_request'] : null;
-        $this->container['grant_access_token_audience'] = isset($data['grant_access_token_audience']) ? $data['grant_access_token_audience'] : null;
-        $this->container['grant_scope'] = isset($data['grant_scope']) ? $data['grant_scope'] : null;
-        $this->container['remember'] = isset($data['remember']) ? $data['remember'] : null;
-        $this->container['remember_for'] = isset($data['remember_for']) ? $data['remember_for'] : null;
-        $this->container['session'] = isset($data['session']) ? $data['session'] : null;
+        $this->container['request_url'] = isset($data['request_url']) ? $data['request_url'] : null;
+        $this->container['rp_initiated'] = isset($data['rp_initiated']) ? $data['rp_initiated'] : null;
+        $this->container['sid'] = isset($data['sid']) ? $data['sid'] : null;
+        $this->container['subject'] = isset($data['subject']) ? $data['subject'] : null;
     }
 
     /**
@@ -236,145 +223,97 @@ class PreviousConsentSession implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets consent_request
+     * Gets request_url
      *
-     * @return \OpenAPI\Client\Model\ConsentRequest|null
+     * @return string|null
      */
-    public function getConsentRequest()
+    public function getRequestUrl()
     {
-        return $this->container['consent_request'];
+        return $this->container['request_url'];
     }
 
     /**
-     * Sets consent_request
+     * Sets request_url
      *
-     * @param \OpenAPI\Client\Model\ConsentRequest|null $consent_request consent_request
+     * @param string|null $request_url RequestURL is the original Logout URL requested.
      *
      * @return $this
      */
-    public function setConsentRequest($consent_request)
+    public function setRequestUrl($request_url)
     {
-        $this->container['consent_request'] = $consent_request;
+        $this->container['request_url'] = $request_url;
 
         return $this;
     }
 
     /**
-     * Gets grant_access_token_audience
-     *
-     * @return string[]|null
-     */
-    public function getGrantAccessTokenAudience()
-    {
-        return $this->container['grant_access_token_audience'];
-    }
-
-    /**
-     * Sets grant_access_token_audience
-     *
-     * @param string[]|null $grant_access_token_audience GrantedAudience sets the audience the user authorized the client to use. Should be a subset of `requested_access_token_audience`.
-     *
-     * @return $this
-     */
-    public function setGrantAccessTokenAudience($grant_access_token_audience)
-    {
-        $this->container['grant_access_token_audience'] = $grant_access_token_audience;
-
-        return $this;
-    }
-
-    /**
-     * Gets grant_scope
-     *
-     * @return string[]|null
-     */
-    public function getGrantScope()
-    {
-        return $this->container['grant_scope'];
-    }
-
-    /**
-     * Sets grant_scope
-     *
-     * @param string[]|null $grant_scope GrantScope sets the scope the user authorized the client to use. Should be a subset of `requested_scope`
-     *
-     * @return $this
-     */
-    public function setGrantScope($grant_scope)
-    {
-        $this->container['grant_scope'] = $grant_scope;
-
-        return $this;
-    }
-
-    /**
-     * Gets remember
+     * Gets rp_initiated
      *
      * @return bool|null
      */
-    public function getRemember()
+    public function getRpInitiated()
     {
-        return $this->container['remember'];
+        return $this->container['rp_initiated'];
     }
 
     /**
-     * Sets remember
+     * Sets rp_initiated
      *
-     * @param bool|null $remember Remember, if set to true, tells ORY Hydra to remember this consent authorization and reuse it if the same client asks the same user for the same, or a subset of, scope.
+     * @param bool|null $rp_initiated RPInitiated is set to true if the request was initiated by a Relying Party (RP), also known as an OAuth 2.0 Client.
      *
      * @return $this
      */
-    public function setRemember($remember)
+    public function setRpInitiated($rp_initiated)
     {
-        $this->container['remember'] = $remember;
+        $this->container['rp_initiated'] = $rp_initiated;
 
         return $this;
     }
 
     /**
-     * Gets remember_for
+     * Gets sid
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getRememberFor()
+    public function getSid()
     {
-        return $this->container['remember_for'];
+        return $this->container['sid'];
     }
 
     /**
-     * Sets remember_for
+     * Sets sid
      *
-     * @param int|null $remember_for RememberFor sets how long the consent authorization should be remembered for in seconds. If set to `0`, the authorization will be remembered indefinitely.
+     * @param string|null $sid SessionID is the login session ID that was requested to log out.
      *
      * @return $this
      */
-    public function setRememberFor($remember_for)
+    public function setSid($sid)
     {
-        $this->container['remember_for'] = $remember_for;
+        $this->container['sid'] = $sid;
 
         return $this;
     }
 
     /**
-     * Gets session
+     * Gets subject
      *
-     * @return \OpenAPI\Client\Model\ConsentRequestSession|null
+     * @return string|null
      */
-    public function getSession()
+    public function getSubject()
     {
-        return $this->container['session'];
+        return $this->container['subject'];
     }
 
     /**
-     * Sets session
+     * Sets subject
      *
-     * @param \OpenAPI\Client\Model\ConsentRequestSession|null $session session
+     * @param string|null $subject Subject is the user for whom the logout was request.
      *
      * @return $this
      */
-    public function setSession($session)
+    public function setSubject($subject)
     {
-        $this->container['session'] = $session;
+        $this->container['subject'] = $subject;
 
         return $this;
     }
