@@ -73,6 +73,16 @@ class PublicApiTest extends TestCase
     }
 
     /**
+     * Test case for disconnectUser
+     *
+     * OpenID Connect Front-Backchannel enabled Logout.
+     *
+     */
+    public function testDisconnectUser()
+    {
+    }
+
+    /**
      * Test case for discoverOpenIDConfiguration
      *
      * OpenID Connect Discovery.
@@ -83,22 +93,22 @@ class PublicApiTest extends TestCase
     }
 
     /**
+     * Test case for oauth2Token
+     *
+     * The OAuth 2.0 token endpoint.
+     *
+     */
+    public function testOauth2Token()
+    {
+    }
+
+    /**
      * Test case for oauthAuth
      *
      * The OAuth 2.0 authorize endpoint.
      *
      */
     public function testOauthAuth()
-    {
-    }
-
-    /**
-     * Test case for oauthToken
-     *
-     * The OAuth 2.0 token endpoint.
-     *
-     */
-    public function testOauthToken()
     {
     }
 

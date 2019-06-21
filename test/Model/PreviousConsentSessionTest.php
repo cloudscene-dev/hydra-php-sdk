@@ -35,7 +35,7 @@ use PHPUnit\Framework\TestCase;
  * PreviousConsentSessionTest Class Doc Comment
  *
  * @category    Class
- * @description The response used to return handled consent requests same as HandledAuthenticationRequest, just with consent_request exposed as json
+ * @description The response used to return used consent requests same as HandledLoginRequest, just with consent_request exposed as json
  * @package     OpenAPI\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

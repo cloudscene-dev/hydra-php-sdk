@@ -86,6 +86,13 @@ class AcceptLoginRequestTest extends TestCase
     }
 
     /**
+     * Test attribute "context"
+     */
+    public function testPropertyContext()
+    {
+    }
+
+    /**
      * Test attribute "force_subject_identifier"
      */
     public function testPropertyForceSubjectIdentifier()

@@ -86,6 +86,20 @@ class WellKnownTest extends TestCase
     }
 
     /**
+     * Test attribute "backchannel_logout_session_supported"
+     */
+    public function testPropertyBackchannelLogoutSessionSupported()
+    {
+    }
+
+    /**
+     * Test attribute "backchannel_logout_supported"
+     */
+    public function testPropertyBackchannelLogoutSupported()
+    {
+    }
+
+    /**
      * Test attribute "claims_parameter_supported"
      */
     public function testPropertyClaimsParameterSupported()
@@ -96,6 +110,27 @@ class WellKnownTest extends TestCase
      * Test attribute "claims_supported"
      */
     public function testPropertyClaimsSupported()
+    {
+    }
+
+    /**
+     * Test attribute "end_session_endpoint"
+     */
+    public function testPropertyEndSessionEndpoint()
+    {
+    }
+
+    /**
+     * Test attribute "frontchannel_logout_session_supported"
+     */
+    public function testPropertyFrontchannelLogoutSessionSupported()
+    {
+    }
+
+    /**
+     * Test attribute "frontchannel_logout_supported"
+     */
+    public function testPropertyFrontchannelLogoutSupported()
     {
     }
 
@@ -166,6 +201,13 @@ class WellKnownTest extends TestCase
      * Test attribute "response_types_supported"
      */
     public function testPropertyResponseTypesSupported()
+    {
+    }
+
+    /**
+     * Test attribute "revocation_endpoint"
+     */
+    public function testPropertyRevocationEndpoint()
     {
     }
 

@@ -93,6 +93,16 @@ class AdminApiTest extends TestCase
     }
 
     /**
+     * Test case for acceptLogoutRequest
+     *
+     * Accept a logout request.
+     *
+     */
+    public function testAcceptLogoutRequest()
+    {
+    }
+
+    /**
      * Test case for createJsonWebKeySet
      *
      * Generate a new JSON Web Key.
@@ -193,6 +203,16 @@ class AdminApiTest extends TestCase
     }
 
     /**
+     * Test case for getLogoutRequest
+     *
+     * Get a logout request.
+     *
+     */
+    public function testGetLogoutRequest()
+    {
+    }
+
+    /**
      * Test case for getOAuth2Client
      *
      * Get an OAuth 2.0 Client..
@@ -223,12 +243,12 @@ class AdminApiTest extends TestCase
     }
 
     /**
-     * Test case for listUserConsentSessions
+     * Test case for listSubjectConsentSessions
      *
-     * Lists all consent sessions of a user.
+     * Lists all consent sessions of a subject.
      *
      */
-    public function testListUserConsentSessions()
+    public function testListSubjectConsentSessions()
     {
     }
 
@@ -253,19 +273,19 @@ class AdminApiTest extends TestCase
     }
 
     /**
-     * Test case for revokeAllUserConsentSessions
+     * Test case for rejectLogoutRequest
      *
-     * Revokes all previous consent sessions of a user.
+     * Reject a logout request.
      *
      */
-    public function testRevokeAllUserConsentSessions()
+    public function testRejectLogoutRequest()
     {
     }
 
     /**
      * Test case for revokeAuthenticationSession
      *
-     * Invalidates a user's authentication session.
+     * Invalidates all login sessions of a certain user Invalidates a subject's authentication session.
      *
      */
     public function testRevokeAuthenticationSession()
@@ -273,22 +293,12 @@ class AdminApiTest extends TestCase
     }
 
     /**
-     * Test case for revokeUserClientConsentSessions
+     * Test case for revokeConsentSessions
      *
-     * Revokes consent sessions of a user for a specific OAuth 2.0 Client.
-     *
-     */
-    public function testRevokeUserClientConsentSessions()
-    {
-    }
-
-    /**
-     * Test case for revokeUserLoginCookie
-     *
-     * Logs user out by deleting the session cookie.
+     * Revokes consent sessions of a subject for a specific OAuth 2.0 Client.
      *
      */
-    public function testRevokeUserLoginCookie()
+    public function testRevokeConsentSessions()
     {
     }
 

@@ -1396,7 +1396,7 @@ class AdminApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\OAuth2Client|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
+     * @return \OpenAPI\Client\Model\OAuth2Client|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError
      */
     public function createOAuth2Client($body)
     {
@@ -1413,7 +1413,7 @@ class AdminApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\OAuth2Client|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\OAuth2Client|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError|\OpenAPI\Client\Model\GenericError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createOAuth2ClientWithHttpInfo($body)
     {
@@ -1458,6 +1458,18 @@ class AdminApi
 
                     return [
                         ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OAuth2Client', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\OpenAPI\Client\Model\GenericError' === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GenericError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1507,6 +1519,14 @@ class AdminApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\OAuth2Client',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\GenericError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

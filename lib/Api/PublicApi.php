@@ -219,7 +219,7 @@ class PublicApi
     protected function disconnectUserRequest()
     {
 
-        $resourcePath = '/oauth2/disconnect';
+        $resourcePath = '/oauth2/sessions/logout';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

@@ -93,6 +93,20 @@ class OAuth2ClientTest extends TestCase
     }
 
     /**
+     * Test attribute "backchannel_logout_session_required"
+     */
+    public function testPropertyBackchannelLogoutSessionRequired()
+    {
+    }
+
+    /**
+     * Test attribute "backchannel_logout_uri"
+     */
+    public function testPropertyBackchannelLogoutUri()
+    {
+    }
+
+    /**
      * Test attribute "client_id"
      */
     public function testPropertyClientId()
@@ -135,6 +149,27 @@ class OAuth2ClientTest extends TestCase
     }
 
     /**
+     * Test attribute "created_at"
+     */
+    public function testPropertyCreatedAt()
+    {
+    }
+
+    /**
+     * Test attribute "frontchannel_logout_session_required"
+     */
+    public function testPropertyFrontchannelLogoutSessionRequired()
+    {
+    }
+
+    /**
+     * Test attribute "frontchannel_logout_uri"
+     */
+    public function testPropertyFrontchannelLogoutUri()
+    {
+    }
+
+    /**
      * Test attribute "grant_types"
      */
     public function testPropertyGrantTypes()
@@ -173,6 +208,13 @@ class OAuth2ClientTest extends TestCase
      * Test attribute "policy_uri"
      */
     public function testPropertyPolicyUri()
+    {
+    }
+
+    /**
+     * Test attribute "post_logout_redirect_uris"
+     */
+    public function testPropertyPostLogoutRedirectUris()
     {
     }
 
@@ -236,6 +278,13 @@ class OAuth2ClientTest extends TestCase
      * Test attribute "tos_uri"
      */
     public function testPropertyTosUri()
+    {
+    }
+
+    /**
+     * Test attribute "updated_at"
+     */
+    public function testPropertyUpdatedAt()
     {
     }
 

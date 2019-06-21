@@ -100,6 +100,13 @@ class ConsentRequestTest extends TestCase
     }
 
     /**
+     * Test attribute "context"
+     */
+    public function testPropertyContext()
+    {
+    }
+
+    /**
      * Test attribute "login_challenge"
      */
     public function testPropertyLoginChallenge()
